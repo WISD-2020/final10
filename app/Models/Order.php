@@ -13,4 +13,9 @@ class Order extends Model
     {
         return $this->belongsTo(Member::class);
     }
+
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
 }
