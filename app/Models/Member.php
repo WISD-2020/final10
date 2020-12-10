@@ -19,4 +19,9 @@ class Member extends Model
         return $this->hasMany(Book::class);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }
