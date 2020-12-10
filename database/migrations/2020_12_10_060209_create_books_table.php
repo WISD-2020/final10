@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration
             $table->unsignedInteger('member_id');
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
             $table->string('name');
-            $table->string('quantity');
+            $table->integer('quantity');
             $table->integer('price');
             $table->string('path');
             $table->string('info');

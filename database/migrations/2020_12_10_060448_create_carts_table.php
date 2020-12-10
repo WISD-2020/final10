@@ -19,7 +19,7 @@ class CreateCartsTable extends Migration
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
             $table->unsignedInteger('book_id');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
-            $table->string('quantity');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
