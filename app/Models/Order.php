@@ -9,6 +9,16 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'quantity',
+        'money',
+        'time',
+        'status',
+        'address',
+        'way',
+    ];
+
     public function member()
     {
         return $this->belongsTo(Member::class);
