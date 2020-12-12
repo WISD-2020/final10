@@ -24,4 +24,9 @@ class Member extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function carts()
+    {
+        return $this->belongsToMany(Book::class,'carts');
+    }
+
 }

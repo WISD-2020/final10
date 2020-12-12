@@ -18,4 +18,10 @@ class Book extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    public function carts()
+    {
+        return $this->belongsToMany(Member::class,'carts');
+    }
+
 }
