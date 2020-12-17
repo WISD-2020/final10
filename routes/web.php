@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +28,14 @@ Route::get('/home',[HomeController::class,'home'])->name('home');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/orders',[OrderController::class,'index'])->name('orders.index');
+Route::get('/orders/{id}',[OrderController::class,'show'])->name('orders.show');
+
+Route::get('/shops',[ShopController::class,'index'])->name('shops.index');
+
+Route::get('/books/create',[BookController::class,'create'])->name('books.create');
+
+Route::post('/books',[BookController::class,'store'])->name('books.store');
+
+Route::delete('/books/{book}',[BookController::class,'destroy'])->name('books.destroy');
