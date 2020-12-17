@@ -62,7 +62,7 @@
                 <a href="#" class="list-group-item">Category 3</a>
 
             </div>
-            <br><a href="/shops/create" style="margin-right:200px;">上架</a>
+            <br><a href="/books/create" style="margin-right:200px;">上架</a>
         </div>
         <!-- /.col-lg-3 -->
 
