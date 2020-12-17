@@ -36,7 +36,31 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'category' => 'required',
+            'quantity' => 'required|numeric',
+            'price'=>'required|numeric',
+            'info'=>'required'
+        ]);
+
+        $member=auth()->user()->member;
+        if($member){
+            $member->books()->create([
+                'name' => $request->name,
+                'category' => $request->category,
+                'quantity' => $request->quantity,
+                'price'=>$request->price,
+                'info'=>$request->info
+            ]);
+
+
+            return redirect('shops')->with('success', '成功上架!');
+        }
+
+
+        return redirect()->route('login')->with('error','尚未登入!');
+
     }
 
     /**
