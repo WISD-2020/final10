@@ -36,7 +36,7 @@
             <a href="/mhome">回首頁</a>
         </li>
         <li class="sidebar-nav-item">
-            <a href="#">賣場頁面</a>
+            <a href="/shops">賣場頁面</a>
         </li>
         <li class="sidebar-nav-item">
             <a href="#"></a>
@@ -54,7 +54,7 @@
 <header class="masthead d-flex">
     <div class="container text-center my-auto">
         <h1 class="mb-1">二手書購物網站</h1>
-        <b>歡迎回來</b>
+        <b>歡迎回來,{{ Auth::user()->name }}</b>
         <h3 class="mb-5">
         </h3>
         <a class="btn btn-primary btn-lg" href="login" style="margin-right:100px;">登入</a>
