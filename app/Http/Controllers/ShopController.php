@@ -13,8 +13,11 @@ class ShopController extends Controller
 
     public function index()
     {
-
-        return view('shops.index');
+        $member=auth()->user()->member;
+        $books=$member->books()->get();
+        return view('shops.index', [
+            'books' => $books,
+        ]);
     }
 
     public function create()
