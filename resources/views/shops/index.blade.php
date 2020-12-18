@@ -85,7 +85,8 @@
                                 <form action="/books/{{ $book->id }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button class="btn btn-primary btn-sm">刪除</button>
+                                    <a class="btn btn-primary btn-sm" href="/books/{{$book->id}}/edit" style="margin-right:100px;">編輯</a>
+                                    <button class="btn btn-danger btn-sm">刪除</button>
                                 </form>
                             </div>
                         </div>
