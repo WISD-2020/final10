@@ -35,6 +35,7 @@ Route::get('/orders/{id}',[OrderController::class,'show'])->name('orders.show');
 Route::get('/shops',[ShopController::class,'index'])->name('shops.index');
 
 Route::get('/books/create',[BookController::class,'create'])->name('books.create');
+Route::get('/books/{id}',[OrderController::class,'show'])->name('books.show');
 
 Route::post('/books',[BookController::class,'store'])->name('books.store');
 
