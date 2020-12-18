@@ -36,6 +36,8 @@ Route::get('/shops',[ShopController::class,'index'])->name('shops.index');
 
 Route::get('/books/create',[BookController::class,'create'])->name('books.create');
 Route::get('/books/{id}',[BookController::class,'show'])->name('books.show');
+Route::get('/books/{id}/edit',[BookController::class,'edit'])->name('books.edit');
+Route::patch('/books/{id}',[BookController::class,'update'])->name('books.update');
 
 Route::post('/books',[BookController::class,'store'])->name('books.store');
 
