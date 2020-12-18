@@ -41,8 +41,11 @@ class BookController extends Controller
             'category' => 'required',
             'quantity' => 'required|numeric',
             'price'=>'required|numeric',
-            'info'=>'required'
+            'info'=>'required',
+            'path'=>'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+        $imageName = time().'.'.$request->path->extension();
+        $request->path->move(public_path('images'), $imageName);
 
         $member=auth()->user()->member;
         if($member){
@@ -51,7 +54,8 @@ class BookController extends Controller
                 'category' => $request->category,
                 'quantity' => $request->quantity,
                 'price'=>$request->price,
-                'info'=>$request->info
+                'info'=>$request->info,
+                'path'=>"$imageName"
             ]);
 
 

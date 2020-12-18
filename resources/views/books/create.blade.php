@@ -39,7 +39,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form action="/books" method="POST" role="form">
+            <form action="/books" method="POST" role="form" enctype="multipart/form-data">
 
                 @csrf
                 @method('POST')
@@ -62,6 +62,10 @@
                 <div class="form-group">
                     <label for="info">產品說明：</label>
                     <textarea id="info" name="info" class="form-control" rows="10" placeholder="請輸入產品說明"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="path">選擇圖片：</label>
+                    <input type="file" name="path" class="form-control">
                 </div>
                 <button type="submit" class="btn-sm btn-primary">新增</button>
             </form>
