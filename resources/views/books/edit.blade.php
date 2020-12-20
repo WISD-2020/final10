@@ -49,23 +49,23 @@
                 @method('PATCH')
                 <div class="form-group">
                     <label for="name">書名：</label>
-                    <input id="name" name="name" class="form-control" placeholder="{{$book->name}}">
+                    <input id="name" name="name" class="form-control" placeholder="{{$book->name}}" value="{{$book->name}}">
                 </div>
                 <div class="form-group">
                     <label for="category">分類：</label>
-                    <input id="category" name="category" class="form-control" placeholder="{{$book->category}}">
+                    <input id="category" name="category" class="form-control" placeholder="{{$book->category}}" value="{{$book->category}}">
                 </div>
                 <div class="form-group">
                     <label for="quantity">數量：</label>
-                    <input id="quantity" name="quantity" class="form-control" placeholder="{{$book->quantity}}">
+                    <input id="quantity" name="quantity" class="form-control" placeholder="{{$book->quantity}}" value="{{$book->quantity}}">
                 </div>
                 <div class="form-group">
                     <label for="price">價格：</label>
-                    <input id="price" name="price" class="form-control" placeholder="{{$book->price}}">
+                    <input id="price" name="price" class="form-control" placeholder="{{$book->price}}" value="{{$book->price}}">
                 </div>
                 <div class="form-group">
                     <label for="info">產品說明：</label>
-                    <textarea id="info" name="info" class="form-control" rows="10" placeholder="{{$book->info}}"></textarea>
+                    <textarea id="info" name="info" class="form-control" rows="10" placeholder="{{$book->info}}">{{$book->info}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="path">選擇圖片：</label>
