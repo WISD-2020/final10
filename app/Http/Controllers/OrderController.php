@@ -14,7 +14,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $orders = Order::where('buyer_id', $request->user()->id)->get();
+        $orders = Order::where('member_id', $request->user()->id)->get();
         return view('orders.index', [
             'orders' => $orders,
         ]);
@@ -39,7 +39,20 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $buyer_id=auth()->user()->member;
+        $buyer_id->orders()->create([
+            'seller_id' => $request->seller_id,
+            'member_id' => $request->user()->id,
+            'book_id' => $request->book_id,
+            'name'=>$request->name,
+            'quantity'=>$request->quantity,
+            'money'=>$request->money,
+            'time'=>now(),
+            'status'=>"等待出貨",
+            'address'=>"台北",
+            'way'=>"貨到付款"
+        ]);
+        return redirect('orders')->with('success','下單成功!');
     }
 
     /**

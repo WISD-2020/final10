@@ -1,6 +1,6 @@
 
 @extends('layouts.OrdersMaster')
-
+@include('flash-message')
 @section('content')
 
     <!-- 訂單紀錄(購買) -->
@@ -26,7 +26,7 @@
                             <!-- 任務名稱 -->
                             <td class="table-text">
                                 <div>賣家：{{ $order->seller_id }}</div>
-                                <div>買家：{{ $order->buyer_id }}</div>
+                                <div>買家：{{ $order->member_id }}</div>
                                 <div>書名：{{ $order->name }}</div>
 
                             </td>

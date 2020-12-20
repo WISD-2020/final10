@@ -17,8 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('seller_id');
             $table->foreign('seller_id')->references('id')->on('members')->onDelete('cascade');
-            $table->unsignedInteger('buyer_id');
-            $table->foreign('buyer_id')->references('id')->on('members')->onDelete('cascade');
+            $table->unsignedInteger('member_id');
+            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
             $table->unsignedInteger('book_id');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->string('name');

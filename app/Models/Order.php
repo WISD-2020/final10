@@ -10,6 +10,9 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
+        'seller_id',
+        'member_id',
+        'book_id',
         'name',
         'quantity',
         'money',
@@ -18,6 +21,7 @@ class Order extends Model
         'address',
         'way',
     ];
+    
 
     public function member()
     {
