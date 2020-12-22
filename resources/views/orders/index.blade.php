@@ -1,51 +1,50 @@
 
-@extends('layouts.OrdersMaster')
-@include('flash-message')
-@section('content')
+@extends('layouts.shopbar')
+<div class="uper">
+    @include('flash-message')
+</div>
+<title>訂單列表</title>
+<style>
+    .uper {
+        margin-top: 100px;
+        margin-bottom:50px ;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+</style>
 
-    <!-- 訂單紀錄(購買) -->
-    @if (count($orders) > 0)
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                訂單紀錄(購買)
-            </div>
+@if (count($orders) > 0)
+    <div class="card uper">
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-edit"></i> 訂單列表(購買)
+            </li>
+        </ol>
 
-            <div class="panel-body">
-                <table class="table table-striped task-table">
+        <div class="panel-body">
+            <table class="table table-striped task-table">
 
-                    <!-- 表頭 -->
-                    <thead>
-                    <th>訂單</th>
-                    <th>&nbsp;</th>
-                    </thead>
 
-                    <!-- 表身 -->
-                    <tbody>
-                    @foreach ($orders as $order)
-                        <tr>
-                            <!-- 任務名稱 -->
-                            <td class="table-text">
-                                <div>賣家：{{ $order->seller_id }}</div>
-                                <div>買家：{{ $order->member_id }}</div>
-                                <div>書名：{{ $order->name }}</div>
+                <thead>
+                <th>訂單</th>
+                <th>&nbsp;</th>
+                </thead>
 
-                            </td>
 
-                            <!-- 刪除按鈕 -->
-                            <td>
-                                <form action="/orders/{{ $order->id }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-
-                                    <button>刪除訂單</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
+                <tbody>
+                @foreach ($orders as $order)
+                    <tr>
+                        <td class="table-text">
+                            <div>賣家：{{ $order->seller_id }}</div>
+                            <div>買家：{{ $order->member_id }}</div>
+                            <div>書名：{{ $order->name }}</div>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
-    @endif
-
-@endsection
+    </div>
+@endif
