@@ -6,6 +6,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MemberController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,3 +47,5 @@ Route::patch('/books/{id}',[BookController::class,'update'])->name('books.update
 Route::post('/books',[BookController::class,'store'])->name('books.store');
 
 Route::delete('/books/{book}',[BookController::class,'destroy'])->name('books.destroy');
+
+Route::delete('/member/{member}',[MemberController::class,'destroy'])->name('members.destroy');
