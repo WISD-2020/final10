@@ -49,3 +49,4 @@ Route::post('/books',[BookController::class,'store'])->name('books.store');
 Route::delete('/books/{book}',[BookController::class,'destroy'])->name('books.destroy');
 
 Route::delete('/member/{member}',[MemberController::class,'destroy'])->name('members.destroy');
+Route::post('/member',[MemberController::class,'store'])->name('members.store');
