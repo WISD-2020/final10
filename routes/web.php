@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/mhome', function () {
     return view('mhome');})->name('mhome');
 
 Route::get('/home',[HomeController::class,'home'])->name('home');
+
+Route::get('/admins',[AdminController::class,'index'])->name('admins.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
