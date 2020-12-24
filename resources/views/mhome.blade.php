@@ -59,6 +59,7 @@
         </h3>
         <a class="btn btn-primary btn-lg" href="login" style="margin-right:100px;">登入</a>
         <a class="btn btn-danger btn-lg" href="register">註冊</a>
+        <a class="btn btn-success btn-lg" style="margin-left:50px;" href="{{route('logout')}}">登出</a>
     </div>
     <div class="overlay"></div>
 </header>

@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\MemberController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,3 +40,5 @@ Route::get('/books/create',[BookController::class,'create'])->name('books.create
 Route::post('/books',[BookController::class,'store'])->name('books.store');
 
 Route::delete('/books/{book}',[BookController::class,'destroy'])->name('books.destroy');
+
+Route::get('/logout',[MemberController::class,'logout'])->name('members.logout');

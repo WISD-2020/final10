@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use View;
 
 class MemberController extends Controller
 {
@@ -81,5 +83,13 @@ class MemberController extends Controller
     public function destroy(Member $member)
     {
         //
+    }
+
+    public function logout(Member $member)
+    {
+        if (Auth::check()) {
+            Auth::logout();
+            return redirect()->route('home');
+        }
     }
 }
