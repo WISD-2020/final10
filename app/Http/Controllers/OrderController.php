@@ -40,7 +40,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::user()->id=$request->seller_id)
+        if (Auth::user()->id==$request->seller_id)
         {
             return redirect('orders')->with('error', '你為什麼要買自己賣的東西...');
         }

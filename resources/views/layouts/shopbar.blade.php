@@ -17,7 +17,7 @@
                     <a class="nav-link" href="http://localhost:8000/shops">賣場頁面</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="http://localhost:8000/orders">訂單</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
