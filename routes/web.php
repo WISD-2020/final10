@@ -50,3 +50,4 @@ Route::delete('/books/{book}',[BookController::class,'destroy'])->name('books.de
 
 Route::delete('/member/{member}',[MemberController::class,'destroy'])->name('members.destroy');
 Route::post('/member',[MemberController::class,'store'])->name('members.store');
+Route::get('/shops/{id}',[MemberController::class,'shop'])->name('members.shop')->where('id', '[0-9]+');
