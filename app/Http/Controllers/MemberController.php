@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,12 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function shop($id)
+    {
+        $books=Book::where('member_id',$id)->get();
+        return view('members.shop',['books'=>$books]);
+    }
+
     public function index()
     {
         //
