@@ -49,16 +49,20 @@
                                         <input readonly="readonly" id="name" name="name" class="form-control" value="{{ $user->name }}">
                                     </div>
                                     <div>
+                                        <label for="sex">性別：</label>
+                                        <input readonly="readonly" id="sex" name="sex" class="form-control" value="{{ $user->sex }}">
+                                    </div>
+                                    <div>
                                         <label for="email">email：</label>
                                         <input readonly="readonly" id="email" name="email" class="form-control" value="{{ $user->email}}">
                                     </div>
                                     <div>
                                         <label for="address">地址：</label>
-                                        <input readonly="readonly" id="address" name="address" class="form-control" value="{{ $user->addess }}">
+                                        <input readonly="readonly" id="address" name="address" class="form-control" value="{{ $user->address }}">
                                     </div>
                                     <div>
                                         <label for="tel">電話：</label>
-                                        <input readonly="readonly" id="tel" name="tel" class="form-control" value="{{ $user->tel}}">
+                                        <input readonly="readonly" id="tel" name="tel" class="form-control" value="0{{ $user->tel}}">
                                     </div>
                                 </td>
                                 <td>

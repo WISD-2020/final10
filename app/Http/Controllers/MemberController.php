@@ -52,10 +52,10 @@ class MemberController extends Controller
         else {
             $member = new Member;
             $member->user_id = $request->user_id;
-            $member->sex = '$request->sex';
+            $member->sex = $request->sex;
             $member->email = $request->email;
-            $member->address = '$request->address';
-            $member->tel = '$request->tel';
+            $member->address = $request->address;
+            $member->tel = $request->tel;
             $member->save();
             return redirect('admins')->with('success', '已登入為會員!');
         }

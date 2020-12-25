@@ -15,6 +15,11 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="sex" value="性別"/>
+                <x-jet-input id="sex" name="sex" class="block mt-1 w-full"/>
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
@@ -27,6 +32,16 @@
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="address" value="地址"/>
+                <x-jet-input id="address" name="address" class="block mt-1 w-full"/>
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="tel" value="電話"/>
+                <x-jet-input id="tel" name="tel" class="block mt-1 w-full"/>
             </div>
 
             <div class="flex items-center justify-end mt-4">
