@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,12 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function shop($id)
+    {
+        $books=Book::where('member_id',$id)->get();
+        return view('members.shop',['books'=>$books]);
+    }
+
     public function index()
     {
         //
@@ -37,7 +44,21 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $exist=Member::find($request->user_id);
+        if($exist)
+        {
+            return redirect('admins')->with('error', '這位使用者已經是會員了!');
+        }
+        else {
+            $member = new Member;
+            $member->user_id = $request->user_id;
+            $member->sex = '$request->sex';
+            $member->email = $request->email;
+            $member->address = '$request->address';
+            $member->tel = '$request->tel';
+            $member->save();
+            return redirect('admins')->with('success', '已登入為會員!');
+        }
     }
 
     /**
@@ -82,7 +103,8 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
+        return redirect('/admins');
     }
 
     public function logout(Member $member)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -12,9 +13,13 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $orders = Order::where('member_id', $request->user()->id)->get();
+        return view('orders.index', [
+            'orders' => $orders,
+        ]);
+
     }
 
     /**
@@ -35,7 +40,26 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (Auth::user()->id==$request->seller_id)
+        {
+            return redirect('orders')->with('error', '你為什麼要買自己賣的東西...');
+        }
+        else {
+            $buyer_id = auth()->user()->member;
+            $buyer_id->orders()->create([
+                'seller_id' => $request->seller_id,
+                'member_id' => $request->user()->id,
+                'book_id' => $request->book_id,
+                'name' => $request->name,
+                'quantity' => $request->quantity,
+                'money' => $request->money,
+                'time' => now(),
+                'status' => "test",
+                'address' => "test",
+                'way' => "test"
+            ]);
+            return redirect('orders')->with('success', '下單成功!');
+        }
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class BookController extends Controller
 {
@@ -24,7 +25,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
+
     }
 
     /**
@@ -35,7 +37,35 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'category' => 'required',
+            'quantity' => 'required|numeric',
+            'price'=>'required|numeric',
+            'info'=>'required',
+            'path'=>'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        $imageName = time().'.'.$request->path->extension();
+        $request->path->move(public_path('images'), $imageName);
+
+        $member=auth()->user()->member;
+        if($member){
+            $member->books()->create([
+                'name' => $request->name,
+                'category' => $request->category,
+                'quantity' => $request->quantity,
+                'price'=>$request->price,
+                'info'=>$request->info,
+                'path'=>"$imageName"
+            ]);
+
+
+            return redirect('shops')->with('success', '成功上架!');
+        }
+
+
+        return redirect()->route('login')->with('error','尚未登入!');
+
     }
 
     /**
@@ -44,9 +74,10 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show($id)
     {
-        //
+        $book=Book::find($id);
+        return view('books.show',['book'=>$book]);
     }
 
     /**
@@ -55,9 +86,18 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit($id)
     {
-        //
+        $book = Book::findOrFail($id);
+
+        if (Gate::denies('update books', $book)) {
+            abort(403);
+        }
+        else {
+            $book = Book::findOrFail($id);
+            return view('books.edit', compact('book'));
+        }
+
     }
 
     /**
@@ -67,9 +107,36 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request,$id)
     {
-        //
+        $book = Book::findOrFail($id);
+
+        if (Gate::denies('update books', $book)) {
+            abort(403);
+        }
+        else {
+            $validatedData = $request->validate([
+                'name' => 'required|max:255',
+                'category' => 'required',
+                'quantity' => 'required|numeric',
+                'price' => 'required|numeric',
+                'info' => 'required',
+                'path' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ]);
+            $imageName = time() . '.' . $request->path->extension();
+            $request->path->move(public_path('images'), $imageName);
+            Book::whereId($id)->update([
+                'name' => $request->name,
+                'category' => $request->category,
+                'quantity' => $request->quantity,
+                'price' => $request->price,
+                'info' => $request->info,
+                'path' => "$imageName"
+            ]);
+
+            return redirect('shops')->with('success', '成功更新');
+        }
+
     }
 
     /**
@@ -80,6 +147,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return redirect('/shops');
     }
 }
