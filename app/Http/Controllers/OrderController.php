@@ -54,9 +54,9 @@ class OrderController extends Controller
                 'quantity' => $request->quantity,
                 'money' => $request->money,
                 'time' => now(),
-                'status' => "test",
-                'address' => "test",
-                'way' => "test"
+                'status' => "未完成",
+                'address' => $request->user()->address,
+                'way' => "面交"
             ]);
             return redirect('orders')->with('success', '下單成功!');
         }
