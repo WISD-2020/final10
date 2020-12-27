@@ -52,5 +52,7 @@ Route::delete('/member/{member}',[MemberController::class,'destroy'])->name('mem
 Route::post('/member',[MemberController::class,'store'])->name('members.store');
 Route::get('/shops/{id}',[MemberController::class,'shop'])->name('members.shop')->where('id', '[0-9]+');
 
+Route::get('members/{member}',[MemberController::class,'show'])->name('members.show')->middleware('auth');
+
 Route::get('/logout',[MemberController::class,'logout'])->name('members.logout');
 
