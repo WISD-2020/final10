@@ -52,14 +52,32 @@
 
 <!-- Header -->
 <header class="masthead d-flex">
-    <div class="container text-center my-auto">
-        <h1 class="mb-1">二手書購物網站</h1><br>
-        <h4><b>歡迎回來,{{ Auth::user()->name }}</b></h4>
-        <h3 class="mb-5">
-        </h3>
+    <div class="container text-center"  style="text-align:center;">
+        <h3 class="mb-1">會員資料</h3><hr noshade>
 
-        <a class="btn btn-dark btn-lg" style="margin-left:50px;" href="{{ route('members.show',[ Auth::id()]) }}">查看會員資料</a>
-        <a class="btn btn-success btn-lg" style="margin-left:50px;" href="{{route('logout')}}">登出</a>
+        <form action="{{route('members.show',[ Auth::id()])}}" method="post">
+            <div class="field" align="center">
+                <table width="350" height="80" style='position:relative;left:50px;'>
+                    　<tr><td align="center">
+
+                        <p align="left";valign="center">
+                        <span style="font-size:22px;">
+                        <label for="">會員名稱：</label>
+                        {{$name}}<br>
+                        <label for="">性別：</label>
+                        {{$sex}}<br>
+                        <label for="">email：</label>
+                        {{$email}}<br>
+                        <label for="">地址：</label>
+                        {{$address}}<br>
+                        <label for="">電話：</label>
+                        {{$tel}}<br>
+                    </span></p></td></tr></table>
+            </div>
+
+        </form><br><br>
+
+        <a class="btn btn-success btn-lg" href="{{route('mhome')}}">返回</a>
     </div>
     <div class="overlay"></div>
 </header>

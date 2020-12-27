@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use View;
@@ -67,9 +68,21 @@ class MemberController extends Controller
      * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function show(Member $member)
+    public function show(User $member)
     {
-        //
+        if ($member->id == Auth::id()&&$member->type==0) {
+
+            $members = User::where('id', $member->id)->firstOrFail();
+            return View::make('members.show',[
+                'name'=>$members->name,
+                'sex'=>$members->sex,
+                'email'=>$members->email,
+                'address'=>$members->address,
+                'tel'=>$members->tel,
+            ]);
+        }
+        else
+            return redirect()->route('members.show',[ Auth::id()]);
     }
 
     /**
