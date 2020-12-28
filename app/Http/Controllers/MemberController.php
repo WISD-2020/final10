@@ -52,6 +52,7 @@ class MemberController extends Controller
         }
         else {
             $member = new Member;
+            $member->id=$request->user_id;
             $member->user_id = $request->user_id;
             $member->sex = $request->sex;
             $member->email = $request->email;
