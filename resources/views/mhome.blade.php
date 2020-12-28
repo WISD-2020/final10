@@ -57,8 +57,55 @@
         <h4><b>歡迎回來,{{ Auth::user()->name }}</b></h4>
         <h3 class="mb-5">
         </h3>
-        
-        <a class="btn btn-dark btn-lg" style="margin-left:50px;" href="{{ route('members.show',[ Auth::id()]) }}">查看會員資料</a>
+
+        <form class="example" action="{{route('books.search')}}" style="margin:auto;max-width:300px">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <input type="text" placeholder="查詢商品" name="searchs">
+            <button type="submit"><i class="fa fa-search"></i></button>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <style>
+                body {
+                    font-family: Arial;
+                }
+
+                * {
+                    box-sizing: border-box;
+                }
+
+                form.example input[type=text] {
+                    padding: 10px;
+                    font-size: 17px;
+                    border: 1px solid grey;
+                    float: left;
+                    width: 80%;
+                    background: #f1f1f1;
+                }
+
+                form.example button {
+                    float: left;
+                    width: 20%;
+                    padding: 10px;
+                    background: #2196F3;
+                    color: white;
+                    font-size: 17px;
+                    border: 1px solid grey;
+                    border-left: none;
+                    cursor: pointer;
+                }
+
+                form.example button:hover {
+                    background: #0b7dda;
+                }
+
+                form.example::after {
+                    content: "";
+                    clear: both;
+                    display: table;
+                }
+            </style>
+        </form><br><br>
+        <a class="btn btn-dark btn-lg" href="{{ route('members.show',[ Auth::id()]) }}">查看會員資料</a>
         <a class="btn btn-danger btn-lg" style="margin-left:50px;" href="{{route('logout')}}">登出</a>
     </div>
     <div class="overlay"></div>

@@ -53,6 +53,7 @@ Route::post('/member',[MemberController::class,'store'])->name('members.store');
 Route::get('/shops/{id}',[MemberController::class,'shop'])->name('members.shop')->where('id', '[0-9]+');
 
 Route::get('members/{member}',[MemberController::class,'show'])->name('members.show')->middleware('auth');
+Route::get('/search',[BookController::class,'search'])->name('books.search');
 
 Route::get('/logout',[MemberController::class,'logout'])->name('members.logout');
 
