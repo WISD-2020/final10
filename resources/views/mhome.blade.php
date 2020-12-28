@@ -57,9 +57,9 @@
         <h4><b>歡迎回來,{{ Auth::user()->name }}</b></h4>
         <h3 class="mb-5">
         </h3>
-
+        
         <a class="btn btn-dark btn-lg" style="margin-left:50px;" href="{{ route('members.show',[ Auth::id()]) }}">查看會員資料</a>
-        <a class="btn btn-success btn-lg" style="margin-left:50px;" href="{{route('logout')}}">登出</a>
+        <a class="btn btn-danger btn-lg" style="margin-left:50px;" href="{{route('logout')}}">登出</a>
     </div>
     <div class="overlay"></div>
 </header>
