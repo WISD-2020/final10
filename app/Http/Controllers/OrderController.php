@@ -55,9 +55,9 @@ class OrderController extends Controller
         {
             return redirect('orders')->with('error', '你為什麼要買自己賣的東西...');
         }
-        else if ($quantity<$qua||$quantity==0||$qua==0)
+        else if ($quantity<$qua||$quantity==0||$qua<=0)
         {
-            return redirect('orders')->with('error', '書沒有那麼多Q_Q');
+            return redirect('orders')->with('error', '發生錯誤');
         }
         else {
             $buyer_id = auth()->user()->member;
