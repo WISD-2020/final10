@@ -22,7 +22,14 @@ class OrderController extends Controller
         ]);
 
     }
+    public function sells(Request $request)
+    {
 
+        $orders = Order::where('seller_id', $request->user()->id)->get();
+        return view('orders.sells', [
+            'orders' => $orders,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -44,7 +51,6 @@ class OrderController extends Controller
         $quantity = Book::where('name', $request->name)->value('quantity');
         $books=Book::where('name',$request->name);
         $qua=$request->quantity;
-        // $Order=Order::create($request->all());
         if (Auth::user()->id==$request->seller_id)
         {
             return redirect('orders')->with('error', '你為什麼要買自己賣的東西...');
