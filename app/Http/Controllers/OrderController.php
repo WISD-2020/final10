@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,9 +41,17 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $quantity = Book::where('name', $request->name)->value('quantity');
+        $books=Book::where('name',$request->name);
+        $qua=$request->quantity;
+        // $Order=Order::create($request->all());
         if (Auth::user()->id==$request->seller_id)
         {
             return redirect('orders')->with('error', '你為什麼要買自己賣的東西...');
+        }
+        else if ($quantity<$qua||$quantity==0||$qua==0)
+        {
+            return redirect('orders')->with('error', '書沒有那麼多Q_Q');
         }
         else {
             $buyer_id = auth()->user()->member;
@@ -58,6 +67,11 @@ class OrderController extends Controller
                 'address' => $request->user()->address,
                 'way' => "面交"
             ]);
+
+            $books->update([
+                'quantity' => $quantity-$qua,
+            ]);
+
             return redirect('orders')->with('success', '下單成功!');
         }
     }
