@@ -1,8 +1,13 @@
 @include('flash-message')
-
 <!DOCTYPE html>
 <html lang="zh-TW">
-<head>
+
+
+@extends('layouts.shopbar')
+<br><br><br>
+<div class="container">
+<header>
+    <title>二手書購物網站</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,22 +20,15 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/shop-homepage.css')}}" rel="stylesheet">
 
-</head>
-
-<body>
-@extends('layouts.shopbar')
-<br><br><br>
-<div class="container">
-<header>
-    <title>二手書購物網站</title>
 </header>
-<br>
+    <body><br>
+    @if(count($sears)>0)
     <div class="container">
         <div class="row">
 
             <div class="col-lg-12" >
                 <div class="row uper" >
-                    @if(count($sears)>0)
+
                         @foreach ($sears as $sear)
 
                             <div class="col-lg-4 col-md-6 mb-4">
@@ -52,16 +50,14 @@
                                 </div>
                             </div>
                         @endforeach
-                    @endif
-
                 </div>
             </div>
             <!-- /.col-lg-12 -->
-
         </div>
-        <!-- /.row -->
 
+        <!-- /.row -->
     </div>
+    @endif
     <!-- /.container -->
 
 

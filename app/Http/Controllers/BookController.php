@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Symfony\Component\Console\Input\Input;
 
 class BookController extends Controller
 {
@@ -149,5 +151,18 @@ class BookController extends Controller
     {
         $book->delete();
         return redirect('/shops');
+    }
+    public function search(Request $request)
+    {
+        $searchs= $request->input('searchs');
+        if($request->has('searchs')) {
+            $sears = Book::where("name", "like", '%' . $searchs . '%')
+                        ->orWhere('info', 'like', '%' . $searchs, '%')
+                        ->get();
+            return view('books.search',[
+                'sears' => $sears,
+            ]);
+        }
+
     }
 }
