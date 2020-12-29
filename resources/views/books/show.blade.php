@@ -30,7 +30,7 @@
         </div>
         <div class="form-group">
             <label for="quantity">數量：</label>
-            <input readonly="readonly" id="quantity" name="quantity" class="form-control" value="{{$book->quantity}}">
+            <input id="quantity" name="quantity" class="form-control" value="{{$book->quantity}}">
         </div>
         <div class="form-group">
             <label for="money">價格：</label>
