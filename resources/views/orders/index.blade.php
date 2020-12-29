@@ -38,6 +38,7 @@
                             <div>賣家：{{ $order->seller_id }}</div>
                             <div>買家：{{ $order->member_id }}</div>
                             <div>書名：{{ $order->name }}</div>
+                            <div>購買數量：{{ $order->quantity }}</div>
                             <div>地址：{{ $order->address }}</div>
                             <div>運送方式：{{ $order->way }}</div>
                             <div>訂單狀態：{{ $order->status }}</div>
