@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -132,6 +133,12 @@ class BookController extends Controller
                 'price' => $request->price,
                 'info' => $request->info,
                 'path' => "$imageName"
+            ]);
+
+            $orders=Order::where('book_id',$id);
+            $orders->update([
+                'name' => $request->name,
+                'money' => $request->price,
             ]);
 
             return redirect('shops')->with('success', '成功更新');
