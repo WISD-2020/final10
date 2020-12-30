@@ -36,16 +36,18 @@
                                     <a href="#"><img class="card-img-top" src="images/{{$sear->path}}" width="400px" height="200px" alt=""></a>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="/books/{{ $sear->id }}">{{ $sear->name }}</a>
-                                        </h4>
-                                        <h5>{{ $sear->price }}</h5>
-                                        <p class="card-text">{{$sear->info}}</p>
+                                            {{ $sear->name }}
+
+                                        <h6>商品資訊：{{$sear->info}}</h6>
+                                        <h6><a href="/shops/{{ $sear->member_id}}">賣家：{{$sear->member->user->name}}</a></h6></h4>
                                     </div>
-                                    <div class="card-footer" align="left">
+                                    <h4><a style="margin-left:270px;">${{ $sear->price }}</a></h4>
+                                    <div class="card-footer">
                                         <form action="/books/{{ $sear->id }}" method="POST">
-                                            {{ csrf_field() }}
-                                            <a class="btn btn-primary btn-sm" href="/books/{{ $sear->id }}" style="margin-right:100px;">檢視商品</a>
+                                        {{ csrf_field() }}
+                                        <a class="btn btn-primary btn-sm" href="/books/{{ $sear->id }}" >檢視商品</a>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>

@@ -164,7 +164,6 @@ class BookController extends Controller
         $searchs= $request->input('searchs');
         if($request->has('searchs')) {
             $sears = Book::where("name", "like", '%' . $searchs . '%')
-                        ->orWhere('info', 'like', '%' . $searchs, '%')
                         ->get();
             return view('books.search',[
                 'sears' => $sears,
