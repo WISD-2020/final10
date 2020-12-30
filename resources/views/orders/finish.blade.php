@@ -1,4 +1,3 @@
-
 @extends('layouts.shopbar')
 <div class="uper">
     @include('flash-message')
@@ -13,13 +12,13 @@
     }
 </style>
 
-@if (count($orders) > 0)
+@if (count($finish) > 0)
     <div class="card uper">
         <ol class="breadcrumb">
             <li class="active">
                 <a class="fa fa-edit" href="/orders">訂單列表(購買)</a>
-                <l class="fa fa-edit">訂單列表(賣家)</l>
-                <a class="fa fa-edit" href="/orders/finish">已完成</a>
+                <a class="fa fa-edit" href="/sells">訂單列表(賣家)</a>
+                <l class="fa fa-edit" >已完成</l>
             </li>
         </ol>
 
@@ -34,20 +33,21 @@
 
 
                 <tbody>
-                @foreach ($orders as $order)
+                @foreach ($finish as $finish)
                     <tr>
                         <td class="table-text">
-                            <div>賣家：{{ $order->seller_id }}</div>
-                            <div>買家：{{ $order->member_id }}</div>
-                            <div>書名：{{ $order->name }}</div>
-                            <div>數量：{{ $order->quantity }}</div>
-                            <div>地址：{{ $order->address }}</div>
-                            <div>運送方式：{{ $order->way }}</div>
-                            <div>訂單狀態：{{ $order->status }}</div>
+                            <div>賣家：{{ $finish->seller_id }}</div>
+                            <div>買家：{{ $finish->member_id }}</div>
+                            <div>書名：{{ $finish->name }}</div>
+                            <div>數量：{{ $finish->quantity }}</div>
+                            <div>地址：{{ $finish->address }}</div>
+                            <div>運送方式：{{ $finish->way }}</div>
+                            <div>訂單狀態：{{ $finish->status }}</div>
                         </td>
                         <td>
                         </td>
                     </tr>
+
                 @endforeach
                 </tbody>
             </table>

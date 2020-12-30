@@ -30,6 +30,13 @@ class OrderController extends Controller
             'orders' => $orders,
         ]);
     }
+    public function finish()
+    {
+        $finish = Order::where('status', '已完成')->get();
+        return view('orders.finish', [
+            'finish' => $finish,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -111,9 +118,12 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update($id)
     {
-        //
+        Order::whereId($id)->update([
+            'status' => "已完成",
+        ]);
+        return redirect('orders');
     }
 
     /**

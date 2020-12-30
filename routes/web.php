@@ -35,6 +35,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/orders',[OrderController::class,'index'])->name('orders.index');
 Route::get('/sells',[OrderController::class,'sells'])->name('orders.sells');
+Route::patch('/orders/{id}',[OrderController::class,'update'])->name('orders.update');
+Route::get('/orders/finish',[OrderController::class,'finish'])->name('orders.finish');
 Route::get('/orders/{id}',[OrderController::class,'show'])->name('orders.show');
 Route::post('/orders',[OrderController::class,'store'])->name('orders.store');
 
