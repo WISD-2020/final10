@@ -49,11 +49,12 @@ class CartController extends Controller
         if($request->has('addcart')) {//若按了"加入購物車"
             $quantity = Book::where('name',$request->name)->value('quantity');//資料庫數量
 
-            $qq=$request->quantity;//加入購物車數量
-            $qq=$quantity-$qq;//加入購物車後數量
-
-            $book = Cart::where('book_id', $request->book_id)->value('book_id');
-            $bookid=$request->book_id;
+            $bb=Cart::where('member_id', Auth::id())->get();
+            $bb = $bb->toArray();
+            $aa = array();
+            for($i = 0;$i < count($bb);$i++){
+                array_push($aa,$bb[$i]['book_id']);
+            }
 
             if (Auth::id()==$request->seller_id) {//若為自己的商品
                 return back()->with('error', '此為您的商品，無法加入購物車');
@@ -62,18 +63,19 @@ class CartController extends Controller
                 return back()->with('error', '此商品已售完');;
 
             }elseif ($quantity>0){//若還有商品
-                if (Cart::where('member_id',Auth::id())&&$book==$bookid) {
-                    return back()->with('error', '購物車已有此商品');
+                    if (is_integer(array_search($request->book_id,$aa))) {
+                        return back()->with('error', '購物車已有此商品');
 
-                }else{//加入購物車
-                    Cart::create([
-                        'member_id' => $request->user()->id,
-                        'book_id' => $request->book_id,
-                        'quantity' => $request->quantity,
-                    ]);
-                    return back()->with('success', '成功加入購物車!');
+                    }else{//加入購物車
+                        Cart::create([
+                            'member_id' => $request->user()->id,
+                            'book_id' => $request->book_id,
+                            'quantity' => $request->quantity,
+                        ]);
+                        return back()->with('success', '成功加入購物車!');
 
                 }
+
 
             }
 
