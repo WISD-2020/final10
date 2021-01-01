@@ -59,6 +59,7 @@ Route::get('/search',[BookController::class,'search'])->name('books.search');
 
 Route::get('/carts',[CartController::class,'create'])->name('carts.index');
 Route::post('/carts',[CartController::class,'store'])->name('carts.store');
+Route::delete('/carts/{cart}',[CartController::class,'destroy'])->name('carts.destroy');
 
 Route::get('/logout',[MemberController::class,'logout'])->name('members.logout');
 
