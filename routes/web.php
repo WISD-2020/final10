@@ -7,6 +7,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +56,9 @@ Route::get('/shops/{id}',[MemberController::class,'shop'])->name('members.shop')
 
 Route::get('members/{member}',[MemberController::class,'show'])->name('members.show')->middleware('auth');
 Route::get('/search',[BookController::class,'search'])->name('books.search');
+
+Route::get('/carts',[CartController::class,'create'])->name('carts.index');
+Route::post('/carts',[CartController::class,'store'])->name('carts.store');
 
 Route::get('/logout',[MemberController::class,'logout'])->name('members.logout');
 

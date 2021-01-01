@@ -12,7 +12,7 @@
     }
 </style>
 <div class="card uper">
-    <form action="/orders" method="POST" role="form" enctype="multipart/form-data">
+    <form method="POST" role="form" enctype="multipart/form-data">
         @csrf
         @method('POST')
 
@@ -40,6 +40,10 @@
             <label for="info">書籍介紹：</label>
             <textarea readonly="readonly" id="info" name="info" class="form-control">{{$book->info}}</textarea>
         </div>
-        <button type="submit" class="btn-sm btn-primary">下單</button>
+        <input type="submit" onclick="javascript: form.action='/orders';" value="下單"  class="btn btn-primary btn-sm" style="margin-left:990px;">
+        <input name="addcart" type="submit" onclick="javascript: form.action='/carts';" value="加入購物車"  class="btn btn-danger btn-sm">
     </form>
 </div>
+
+
+

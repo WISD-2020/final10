@@ -3,7 +3,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/shops">二手書購物網站</a>
-
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -100,6 +99,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost:8000/shops">賣場頁面</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8000/carts">購物車</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost:8000/orders">訂單</a>
