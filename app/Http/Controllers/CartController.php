@@ -46,7 +46,7 @@ class CartController extends Controller
     {
         $search= $request->input('add');
         $bookadd= $request->input('addcart');
-        if($request->has('addcart')) {
+        if($request->has('addcart')) {//若按了"加入購物車"
             $quantity = Book::where('name',$request->name)->value('quantity');//資料庫數量
 
             $qq=$request->quantity;//加入購物車數量
@@ -55,17 +55,17 @@ class CartController extends Controller
             $book = Cart::where('book_id', $request->book_id)->value('book_id');
             $bookid=$request->book_id;
 
-            if (Auth::id()==$request->seller_id) {
+            if (Auth::id()==$request->seller_id) {//若為自己的商品
                 return back()->with('error', '此為您的商品，無法加入購物車');
 
-            }elseif ($quantity<=0){
+            }elseif ($quantity<=0){//若此商品數量為零
                 return back()->with('error', '此商品已售完');;
 
-            }elseif ($quantity>0){
+            }elseif ($quantity>0){//若還有商品
                 if (Cart::where('member_id',Auth::id())&&$book==$bookid) {
                     return back()->with('error', '購物車已有此商品');
 
-                }else{
+                }else{//加入購物車
                     Cart::create([
                         'member_id' => $request->user()->id,
                         'book_id' => $request->book_id,
@@ -123,6 +123,8 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
-        //
+        $cart->delete();
+        return redirect('/carts')->with('success', '商品已移除!');
+
     }
 }

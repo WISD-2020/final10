@@ -18,15 +18,14 @@
 @extends('layouts.shopbar')
 
 
-@if (count($carts) > 0)
+
     <div class="card uper">
         <ol class="breadcrumb">
             <li class="active">
                 <l class="fa fa-edit">購物車列表</l>
             </li>
         </ol>
-        <input type ="button" onclick="history.back()" value="回到上一頁">
-
+@if (count($carts) > 0)
     <div class="card-body">
     <table class="table task-table table table-hover table-bordered" >
         <thead>
@@ -75,7 +74,10 @@
     </table>
     </div>
     </div>
-
+@else
+    <div class="card-body">
+    購物車尚無商品
+    </div>
 @endif
 
 <!-- Page Content -->
