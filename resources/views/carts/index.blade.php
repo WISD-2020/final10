@@ -51,7 +51,7 @@
                         <input readonly="readonly" id="quantity" name="quantity" class="form-control" value="{{$cart->quantity }}">
                     </td>
                     <td width="390">
-                        <input readonly="readonly" id="book_id" name="book_id" class="form-control" value="{{\App\Models\Book::where('id', $cart->book_id)->value('price')}}">
+                        <input readonly="readonly" id="price" name="price" class="form-control" value="{{\App\Models\Book::where('id', $cart->book_id)->value('price')}}">
                     </td>
                     <td width="200">
 
@@ -64,6 +64,8 @@
 
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
+                        {{ method_field('POST') }}
+                        <input name="ord" type="submit" onclick="javascript: form.action='/orders';" value="下訂單"  class="btn btn-outline-primary btn-sm" >
                         <input name="delete" type="submit" onclick="javascript: form.action='/carts/{{$cart->id}}';" value="移除商品"  class="btn btn-outline-danger btn-sm" >
 
                     </td>

@@ -60,7 +60,7 @@
                 <img class="card-img-top" src="/images/{{$book->path}}" alt="">
             </div>
         </div></td></tr><tr><td width="100px"><br>
-                    <input type="submit" onclick="javascript: form.action='/orders';" value="下單"  class="btn btn-primary btn-sm">
+                    <input name="orders" type="submit" onclick="javascript: form.action='/orders';" value="下單"  class="btn btn-primary btn-sm">
                     <input name="addcart" type="submit" onclick="javascript: form.action='/carts';" value="加入購物車"  class="btn btn-danger btn-sm">
         </td></tr></table></form>
 </div>

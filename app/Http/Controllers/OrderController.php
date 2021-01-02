@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -58,6 +59,9 @@ class OrderController extends Controller
         $quantity = Book::where('name', $request->name)->value('quantity');
         $books=Book::where('name',$request->name);
         $qua=$request->quantity;
+        $cart=Cart::where('book_id',$request->book_id);
+
+        if($request->has('orders')) {
         if (Auth::user()->id==$request->seller_id)
         {
             return redirect('orders')->with('error', '你為什麼要買自己賣的東西...');
@@ -86,6 +90,38 @@ class OrderController extends Controller
             ]);
 
             return redirect('orders')->with('success', '下單成功!');
+        }
+    }elseif ($request->has('ord')){
+            if (Auth::user()->id==$request->seller_id)
+            {
+                return redirect('orders')->with('error', '你為什麼要買自己賣的東西...');
+            }
+            else if ($quantity<$qua||$quantity==0||$qua<=0)
+            {
+                return redirect('orders')->with('error', '發生錯誤');
+            }
+            else {
+                $buyer_id = auth()->user()->member;
+                $buyer_id->orders()->create([
+                    'seller_id' => $request->seller_id,
+                    'member_id' => $request->member_id,
+                    'book_id' => $request->book_id,
+                    'name' => $request->name,
+                    'quantity' => $request->quantity,
+                    'money' => $request->price,
+                    'time' => now(),
+                    'status' => "未完成",
+                    'address' => $request->user()->address,
+                    'way' => "面交"
+                ]);
+
+                $books->update([
+                    'quantity' => $quantity - $qua,
+                ]);
+                $cart->delete();
+
+                return redirect('orders')->with('success', '下單成功!');
+            }
         }
     }
 
