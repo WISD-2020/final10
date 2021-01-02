@@ -5,20 +5,20 @@
 
 @extends('layouts.shopbar')
 <br><br><br>
-<div class="container">
+
 <header>
     <title>二手書購物網站</title>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <style>
+    .uper {
+    margin-bottom:50px ;
+    margin-left: 50px;
+    margin-right: 100px;
+    }
+    </style>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/shop-homepage.css')}}" rel="stylesheet">
 
 </header>
     <body><br>
@@ -26,13 +26,33 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-12" >
+            <div class="col-lg-2">
+
+                <div class="list-group">
+                    <table style="border:1px solid;" cellpadding="9" border='1'>
+                        <tr style="text-align:center;" bgcolor="#CCCCFF">
+                            <td style="font-size:19px;">分類</td></tr>
+                    @foreach ($cates as $cate)
+                        <form method="GET" role="form" enctype="multipart/form-data">
+                            @csrf
+                            @method('GET')
+                            <tr><td>
+
+                            <input name="category" type="submit" onclick="javascript: form.action='/search';" value="{{$cate->category}}" style="font-size:15px;" class="btn btn-block btn-sm" >
+                            </td></tr>
+
+                        </form>
+                    @endforeach
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-10">
                 <div class="row uper" >
 
                         @foreach ($sears as $sear)
 
                             <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="card h-100">
+                                <div class="card h-60">
                                     <a href="#"><img class="card-img-top" src="images/{{$sear->path}}" width="400px" height="200px" alt=""></a>
                                     <div class="card-body">
                                         <h4 class="card-title">
@@ -41,7 +61,7 @@
                                         <h6>商品資訊：{{$sear->info}}</h6>
                                         <h6><a href="/shops/{{ $sear->member_id}}">賣家：{{$sear->member->user->name}}</a></h6></h4>
                                     </div>
-                                    <h4><a style="margin-left:270px;">${{ $sear->price }}</a></h4>
+                                    <h4><a style="margin-left:190px;">${{ $sear->price }}</a></h4>
                                     <div class="card-footer">
                                         <form action="/books/{{ $sear->id }}" method="POST">
                                         {{ csrf_field() }}
