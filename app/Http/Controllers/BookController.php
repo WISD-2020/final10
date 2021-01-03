@@ -164,6 +164,7 @@ class BookController extends Controller
         $searchs= $request->input('searchs');
         $category= $request->input('category');
         $cates=DB::table('books')->select('category')->distinct()->get();
+
         if($request->has('searchs')) {
             $sears = Book::where("name", "like", '%' . $searchs . '%')
                         ->get();
@@ -172,7 +173,6 @@ class BookController extends Controller
             $sears = Book::where('category',$category)->get();
 
         }
-
         return view('books.search',[
             'sears' => $sears,'cates' => $cates,
         ]);
