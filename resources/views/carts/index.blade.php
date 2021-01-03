@@ -62,11 +62,14 @@
                         {{--書籍編號--}}
                         <input type="hidden"  id="book_id" name="book_id" class="form-control" value="{{$cart->book_id}}">
 
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-                        {{ method_field('POST') }}
-                        <input name="ord" type="submit" onclick="javascript: form.action='/orders';" value="下訂單"  class="btn btn-outline-primary btn-sm" >
-                        <input name="delete" type="submit" onclick="javascript: form.action='/carts/{{$cart->id}}';" value="移除商品"  class="btn btn-outline-danger btn-sm" >
+                        <form action="/carts" method="POST" >
+                            <p><input name="ord" type="submit" onclick="javascript: form.action='/orders';" value="下訂單"  class="btn btn-outline-primary btn-sm" >
+                            </p></form>
+                        <form action="/carts/{{$cart->id}}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <input name="delete" type="submit" onclick="javascript: form.action='/carts/{{$cart->id}}';" value="移除商品"  class="btn btn-outline-danger btn-sm" >
+                        </form>
 
                     </td>
             </tr>
