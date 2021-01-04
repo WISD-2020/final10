@@ -1,4 +1,5 @@
 @extends('layouts.shopbar')
+<div class="uper"></div>
 @include('flash-message')
 <title>上架書籍</title>
 <style>

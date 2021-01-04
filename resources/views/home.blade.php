@@ -30,10 +30,10 @@
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
-            <a href="/home">二手書購物網站</a>
+            <a href="/">二手書購物網站</a>
         </li>
         <li class="sidebar-nav-item">
-            <a href="/home">回首頁</a>
+            <a href="/">回首頁</a>
         </li>
         <li class="sidebar-nav-item">
             <a href="#"></a>

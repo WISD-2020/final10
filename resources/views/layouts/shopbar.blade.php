@@ -93,7 +93,7 @@
             </div>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="http://localhost:8000/home">首頁
+                    <a class="nav-link" href="/">首頁
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
