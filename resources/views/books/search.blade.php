@@ -61,7 +61,7 @@
                                         <h6>商品資訊：{{$sear->info}}</h6>
                                         <h6><a href="/shops/{{ $sear->member_id}}">賣家：{{$sear->member->user->name}}</a></h6></h4>
                                     </div>
-                                    <h4><a style="margin-left:190px;">${{ $sear->price }}</a></h4>
+                                    <h4><a style="margin-left:215px;">${{ $sear->price }}</a></h4>
                                     <div class="card-footer">
                                         <form action="/books/{{ $sear->id }}" method="POST">
                                         {{ csrf_field() }}

@@ -164,21 +164,15 @@ class BookController extends Controller
         $searchs= $request->input('searchs');
         $category= $request->input('category');
         $cates=DB::table('books')->select('category')->distinct()->get();
+
         if($request->has('searchs')) {
             $sears = Book::where("name", "like", '%' . $searchs . '%')
                         ->get();
-
-
-//               $cates=DB::table('books')
-////                    ->where('category',$category)->distinct()
-////                    ->get();
-
         }
         if($request->has('category')){
             $sears = Book::where('category',$category)->get();
 
         }
-
         return view('books.search',[
             'sears' => $sears,'cates' => $cates,
         ]);
