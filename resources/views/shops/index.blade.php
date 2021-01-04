@@ -37,12 +37,7 @@
 
         <div class="col-lg-3">
             <h1 class="my-4">{{ Auth::user()->name }}的賣場</h1>
-            <div class="list-group">
-                <a href="#" class="list-group-item">Category 1</a>
-                <a href="#" class="list-group-item">Category 2</a>
-                <a href="#" class="list-group-item">Category 3</a>
 
-            </div>
             <br><a href="/books/create" style="margin-right:200px;">上架</a>
         </div>
         <!-- /.col-lg-3 -->

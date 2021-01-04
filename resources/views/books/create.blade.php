@@ -1,5 +1,4 @@
 @extends('layouts.shopbar')
-<div class="uper"></div>
 @include('flash-message')
 <title>上架書籍</title>
 <style>
@@ -26,6 +25,15 @@
 
     <div class="row">
         <div class="col-lg-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div><br />
+            @endif
         </div>
     </div>
 
