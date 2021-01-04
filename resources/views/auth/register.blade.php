@@ -16,7 +16,10 @@
 
             <div class="mt-4">
                 <x-jet-label for="sex" value="性別"/>
-                <x-jet-input id="sex" name="sex" class="block mt-1 w-full"/>
+                <select id="sex" name="sex" class="block mt-1 w-full">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
             </div>
 
             <div class="mt-4">

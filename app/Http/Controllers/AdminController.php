@@ -15,9 +15,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admins.index',
-            ['users' => $users,]);
+        $admin = Admin::where('user_id', auth()->user()->id)->value('user_id');
+        if($admin==null) {
+            return '非管理員,無法顯示畫面';
+
+        }
+        else {
+            $users = User::all();
+            return view('admins.index',
+                ['users' => $users,]);
+        }
     }
 
     /**
