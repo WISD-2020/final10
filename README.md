@@ -183,6 +183,10 @@
 
 - 密碼： rrrrrrrr
 
+# 測試檔案存放位置
+- storage下->sql->final10.sql
+
+
 # 系統開發人員與工作分配
 
 ## [3A732100 張宸鳳](https://github.com/3A732100)
