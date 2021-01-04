@@ -13,7 +13,7 @@
     }
 </style>
 
-@if (count($orders) > 0)
+
     <div class="card uper">
         <ol class="breadcrumb">
             <li class="active">
@@ -59,5 +59,4 @@
             </table>
         </div>
     </div>
-@endif
-/
+

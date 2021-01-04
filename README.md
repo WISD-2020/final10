@@ -1,61 +1,204 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 系統擷取畫面
+## 首頁
+- 提供登入、註冊功能
+<p align="center"><img src="https://imgur.com/GYJeSkm.png"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 登入後首頁
+- 可搜尋書籍名稱、查看會員資料等
+<p align="center"><img src="https://imgur.com/Lr6WjCz.png"></p>
 
-## About Laravel
+## 賣場頁面
+- 提供會員上架書籍
+<p align="center"><img src="https://imgur.com/MRjD7XO.png"></p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- 上架頁面
+<p align="center"><img src="https://imgur.com/33JOYXO.png"></p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- 上架後可以看到自己上架的書籍,可進行編輯、下架書籍
+<p align="center"><img src="https://imgur.com/HhCpJy1.png"></p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- 編輯畫面
+<p align="center"><img src="https://imgur.com/5Hv0FtP.png"></p>
 
-## Learning Laravel
+## 訂單頁面
+- 購買之訂單頁面
+<p align="center"><img src="https://imgur.com/KoezOuJ.png"></p>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- 售出之訂單頁面
+<p align="center"><img src="https://imgur.com/Lu6pYEz.png"></p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- 已完成訂單頁面
+<p align="center"><img src="https://imgur.com/l8rPPzt.png"></p>
 
-## Laravel Sponsors
+## 管理員頁面
+- 可將user設定為member或是移除member的身分
+<p align="center"><img src="https://imgur.com/F1V1J01.png"></p>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# 系統的名稱及作用
 
-### Premium Partners
+二手書交易平台
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+- 能線上查找二手書籍
+- 透過平台上架、販售二手書籍
+- 可及時修改上架書籍之資訊
+- 及時庫存變動,下單時數量跟著減少
+- 方便管理使用者權限
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 系統的主要功能
+## 前台
 
-## Code of Conduct
+- 首頁 [3A732100 張宸鳳](https://github.com/3A732100)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    - Route::middleware(['auth:sanctum', 'verified'])->get('/mhome', function () {
+    return view('mhome');})->name('mhome');
 
-## Security Vulnerabilities
+- 登入後首頁 [3A732100 張宸鳳](https://github.com/3A732100)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    - Route::get('/',[HomeController::class,'home'])->name('home');
 
-## License
+- 訂單頁面(購買) [3A732100 張宸鳳](https://github.com/3A732100)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    - Route::get('/orders',[OrderController::class,'index'])->name('orders.index');
+
+- 訂單頁面(出售) [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::get('/sells',[OrderController::class,'sells'])->name('orders.sells');
+
+- 確認訂單已完成 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::patch('/orders/{id}',[OrderController::class,'update'])->name('orders.update');
+
+- 訂單頁面(已完成) [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::get('/orders/finish',[OrderController::class,'finish'])->name('orders.finish');
+
+- 下訂單 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::post('/orders',[OrderController::class,'store'])->name('orders.store');
+
+- 賣場首頁 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::get('/shops',[ShopController::class,'index'])->name('shops.index');
+
+- 上架書籍頁面 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::get('/books/create',[BookController::class,'create'])->name('books.create');
+
+- 儲存書籍資料 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::post('/books',[BookController::class,'store'])->name('books.store');
+
+- 書籍詳細頁面 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::get('/books/{id}',[BookController::class,'show'])->name('books.show');
+
+- 編輯上架書籍資料 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::get('/books/{id}/edit',[BookController::class,'edit'])->name('books.edit');
+
+- 更新上架書籍資料 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::patch('/books/{id}',[BookController::class,'update'])->name('books.update');
+
+- 下架書籍 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::delete('/books/{book}',[BookController::class,'destroy'])->name('books.destroy');
+
+- 其他人的賣場頁面 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::get('/shops/{id}',[MemberController::class,'shop'])->name('members.shop')->where('id', '[0-9]+');
+
+
+## 後台
+
+
+- 管理員頁面 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::get('/admins',[AdminController::class,'index'])->name('admins.index');
+
+- 移除會員權限 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::delete('/member/{member}',[MemberController::class,'destroy'])->name('members.destroy');
+
+- 添加會員權限 [3A732100 張宸鳳](https://github.com/3A732100)
+
+    - Route::post('/member',[MemberController::class,'store'])->name('members.store');
+
+## ERD
+<p align="center"><img src="https://imgur.com/gp9MRdl.png"></p>
+
+
+## 關聯式綱要圖
+
+
+## 資料表欄位設計
+ - 使用者
+ <p align="center"><img src="https://imgur.com/wj2Is9L.png"></p>
+
+ - 管理員
+ <p align="center"><img src="https://imgur.com/Gwltk4e.png"></p>
+
+ - 會員
+ <p align="center"><img src="https://imgur.com/zu3WJpp.png"></p>
+
+ - 購物車
+ <p align="center"><img src="https://imgur.com/zUCXvLQ.png"></p>
+
+ - 二手書
+ <p align="center"><img src="https://imgur.com/baXEId1.png"></p>
+
+ - 訂單
+ <p align="center"><img src="https://imgur.com/03xhsgg.png"></p>
+
+
+
+# 初始專案與DB負責的同學
+
+- 初始專案、資料庫及資料表建立 [3A732100 張宸鳳](https://github.com/3A732100)
+
+- 資料表關連  
+
+# 額外使用的樣板
+
+- 首頁部分樣板- [Stylish-portfolio](https://startbootstrap.com/theme/stylish-portfolio)
+
+  只採用了部分內容，包含圖片、選單
+
+- 賣場相關樣板-[Shop-homepage](https://startbootstrap.com/template/shop-homepage)
+
+  採用其版面、bar
+
+# 系統使用者測試帳號
+
+## 前台 - 會員
+
+- 帳號： n@gmail.com
+
+- 密碼： nnnnnnnn
+
+## 後台 - 管理者
+
+- 帳號： r@gmail.com
+
+- 密碼： rrrrrrrr
+
+# 系統開發人員與工作分配
+
+## [3A732100 張宸鳳](https://github.com/3A732100)
+- 查看網站首頁(登入前頁面) 
+- 查看會員頁面(登入後頁面)
+- 查看訂單
+- 查看賣場頁面
+- 上架書籍
+- 顯示某商品頁面
+- 下架書籍
+- 更改書籍資料
+- 下訂單
+- 查看會員列表
+- 刪除會員
+
+
+
+    
+    
