@@ -48,6 +48,7 @@ class CartController extends Controller
         $bookadd= $request->input('addcart');
         if($request->has('addcart')) {//若按了"加入購物車"
             $quantity = Book::where('name',$request->name)->value('quantity');//資料庫數量
+            $req=$request->quantity;
 
             $bb=Cart::where('member_id', Auth::id())->get();
             $bb = $bb->toArray();
@@ -61,6 +62,9 @@ class CartController extends Controller
 
             }elseif ($quantity<=0){//若此商品數量為零
                 return back()->with('error', '此商品已售完');;
+
+            }elseif ($quantity<$req||$req<=0){//若此商品數量為零
+                return back()->with('error', '發生錯誤');;
 
             }elseif ($quantity>0){//若還有商品
                     if (is_integer(array_search($request->book_id,$aa))) {
