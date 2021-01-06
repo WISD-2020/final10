@@ -33,6 +33,7 @@
             <th scope="col">書名</th>
             <th scope="col">數量</th>
             <th scope="col">價格</th>
+            <th scope="col">賣家</th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -45,7 +46,7 @@
             <tr  align="center">
 
                     <td width="390">
-                        <input readonly="readonly" id="name" name="name" class="form-control" value="{{\App\Models\Book::where('id', $cart->book_id)->value('name')}}">
+                        <a href="/books/{{ \App\Models\Book::find($cart->book_id)->id}}"><input readonly="readonly" id="name" name="name" class="form-control" value="{{\App\Models\Book::where('id', $cart->book_id)->value('name')}}"></a>
                     </td>
                     <td width="390">
                         <input readonly="readonly" id="quantity" name="quantity" class="form-control" value="{{$cart->quantity }}">
@@ -54,9 +55,12 @@
                         <input readonly="readonly" id="price" name="price" class="form-control" value="{{\App\Models\Book::where('id', $cart->book_id)->value('price')}}">
                     </td>
                     <td width="200">
-
+                        <a href="/shops/{{ \App\Models\Book::find($cart->book_id)->member_id}}">{{ \App\Models\Book::find($cart->book_id)->member->user->name}}</a>
+                    </td>
+                    <td>
                         {{--賣家編號--}}
                         <input type="hidden"  id="seller_id" name="seller_id" class="form-control" value="{{\App\Models\Book::where('id', $cart->book_id)->value('member_id')}}">
+
                         {{--買家編號--}}
                         <input type="hidden"  id="member_id" name="member_id" class="form-control" value="{{$cart->member_id}}">
                         {{--書籍編號--}}
