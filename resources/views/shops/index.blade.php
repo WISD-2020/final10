@@ -53,7 +53,7 @@
                                 <h4 class="card-title">
                                     <a href="/books/{{ $book->id }}">{{ $book->name }}</a>
                                 </h4>
-                                <h5>{{ $book->price }}</h5>
+                                <h5>${{ $book->price }}</h5>
                                 <p class="card-text">{{$book->info}}</p>
                             </div>
                             <div class="card-footer">
