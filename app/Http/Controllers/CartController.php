@@ -81,7 +81,7 @@ class CartController extends Controller
                                 'quantity' => $cartq+$req,
                             ]);
                         }else{
-                            return back()->with('error', '已達庫存上限');;
+                            return back()->with('error', '購物車數量已達庫存上限');;
                         }
 
                         return back()->with('success', '成功加入購物車!');

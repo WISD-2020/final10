@@ -34,7 +34,10 @@
 <p align="center"><img src="https://i.imgur.com/Uui3UQJ.png"></p>
 
 - 商品成功加入購物車
-<p align="center"><img src="https://i.imgur.com/fDYc4Uf.png"></p>
+<p align="center"><img src="https://i.imgur.com/XKaf63i.png"></p>
+
+- 商品重複加入購物車，金額、數量變動
+<p align="center"><img src="https://i.imgur.com/fKtxDw3.png"></p>
 
 - 移除購物車商品
 <p align="center"><img src="https://i.imgur.com/XTgluaB.png"></p>

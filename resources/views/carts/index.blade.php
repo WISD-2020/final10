@@ -52,7 +52,7 @@
                         <input readonly="readonly" id="quantity" name="quantity" class="form-control" value="{{$cart->quantity }}">
                     </td>
                     <td width="390">
-                        <input readonly="readonly" id="price" name="price" class="form-control" value="{{\App\Models\Book::where('id', $cart->book_id)->value('price')}}">
+                        <input readonly="readonly" id="price" name="price" class="form-control" value="{{(\App\Models\Book::where('id', $cart->book_id)->value('price'))*($cart->quantity)}}">
                     </td>
                     <td width="200">
                         <a href="/shops/{{ \App\Models\Book::find($cart->book_id)->member_id}}">{{ \App\Models\Book::find($cart->book_id)->member->user->name}}</a>
