@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -46,6 +47,13 @@ class CartController extends Controller
     {
         $search= $request->input('add');
         $bookadd= $request->input('addcart');
+        $cartq = Cart::where('member_id',Auth::id())
+            ->where('book_id',$request->book_id)
+            ->value('quantity');
+
+        $cquantity=Cart::where('member_id',Auth::id())
+                        ->where('book_id',$request->book_id);
+
         if($request->has('addcart')) {//若按了"加入購物車"
             $quantity = Book::where('name',$request->name)->value('quantity');//資料庫數量
             $req=$request->quantity;
@@ -68,8 +76,15 @@ class CartController extends Controller
 
             }elseif ($quantity>0){//若還有商品
                     if (is_integer(array_search($request->book_id,$aa))) {
-                        return back()->with('error', '購物車已有此商品');
+                        if (($cartq+$req)<=$quantity){
+                            $cquantity->update([
+                                'quantity' => $cartq+$req,
+                            ]);
+                        }else{
+                            return back()->with('error', '已達庫存上限');;
+                        }
 
+                        return back()->with('success', '成功加入購物車!');
                     }else{//加入購物車
                         Cart::create([
                             'member_id' => $request->user()->id,
